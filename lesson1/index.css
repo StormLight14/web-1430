@@ -4,7 +4,7 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 1.5em;
-  background: linear-gradient(to bottom right, rgba(29,217,255,1), rgba(209,247,255,1)); 
+  background-color: #111;
   width: 100vw;
   height: 100vh;
   color: #FFFFFF;
@@ -18,10 +18,14 @@ body {
 }
 
 header {
-  background-color: #000000a8;
+  color: #fcff51;
   text-align: center;
+  font-size: 1.5em;
+  font-weight: 700;
   padding: 1em 0;
+  margin-bottom: 1em;
 }
+
 
 h1 {
   font-weight: 800;
@@ -30,6 +34,7 @@ h1 {
 
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
@@ -70,11 +75,18 @@ main {
 }
 
 footer {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/eb/Mexico_City_New_Years_2013%21_%288333128248%29.jpg");
+  background-repeat: repeat;
+  background-size: 100vw;
+  background-position-y: -150px;
   text-align: center;
-  padding: 0.8em 0;
+  padding: 3em 0;
   background-color: #000000ab;
 }
 
 footer p {
+  color: hsl(203, 100%, 2%);
   margin: 0;
+  font-size: 2.5em;
+  font-weight: 700;
 }
