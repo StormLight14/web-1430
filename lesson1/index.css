@@ -1,12 +1,13 @@
 body {
   margin: 0;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Caveat", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.2em;
-  background: linear-gradient(to bottom right, #4E2689, #7902be);
+  font-size: 1.5em;
+  background: linear-gradient(to bottom right, rgba(29,217,255,1), rgba(209,247,255,1)); 
   width: 100vw;
   height: 100vh;
+  color: #FFFFFF;
 }
 
 .container {
@@ -17,8 +18,7 @@ body {
 }
 
 header {
-  background-color: #000000CC;
-  color: #FFFFFF;
+  background-color: #000000a8;
   text-align: center;
   padding: 1em 0;
 }
@@ -44,8 +44,7 @@ main {
 #countdown {
   display: flex;
   gap: 1.2em;
-  background-color: #000000AA;
-  color: #FFFFFF;
+  background-color: #0000007a;
   padding: 0.6em;
   border-radius: 0.5em;
   box-shadow: 0 0.1em 0.3em #00000099;
@@ -65,9 +64,17 @@ main {
   color: #e6e6e6;
 }
 
+.timerlabel {
+  font-size: 2em;
+  margin: 0 0.2em;
+}
+
 footer {
   text-align: center;
-  padding: 0.1em 0;
-  color: #FFFFFF;
-  background-color: #000000CC;
+  padding: 0.8em 0;
+  background-color: #000000ab;
+}
+
+footer p {
+  margin: 0;
 }
