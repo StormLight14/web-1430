@@ -10,7 +10,7 @@ let weightInKg = prompt("What is your weight in kg?", 0);
 console.log(`Your height in inches is ${heightInCm / 2.54}.`);
 console.log(`Your weight in pounds is ${weightInKg * 2.20462}.`);
 
-console.log(`Fun Fact: Did you know ${Math.floor(Math.random() * (3 - 1)) + 1} is a cool number about me?`);
+console.log(`Fun Fact: Did you know ${(Math.floor(Math.random() * (3 - 1)) + 1) * 10} is a cool number about me?`);
 
 let careerGoal = prompt("What is a career goal you have?");
 console.log(`One of my goals is ${careerGoal}`);
