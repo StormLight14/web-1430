@@ -71,7 +71,6 @@ async function connect() {
         return;
       }
 
-
       console.log(msg);
 
       let msgElement = document.createElement("div");
