@@ -43,6 +43,17 @@ async function connect() {
         return;
       }
 
+      if (msg.endsWith("minecraftforfree")) {
+        let mcElement = document.createElement("iframe");
+        mcElement.src = "https://games.stormyyy.dev/minecraft";
+        mcElement.width = "50%";
+        mcElement.height = "400px";
+        mcElement.style.border = "none";
+
+        document.getElementById("messages").prepend(mcElement);
+        return;
+      }
+
       console.log(msg);
 
       let msgElement = document.createElement("div");
