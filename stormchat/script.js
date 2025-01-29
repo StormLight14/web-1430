@@ -32,7 +32,7 @@ async function connect() {
 
     socket.onmessage = function(event) {
       let msg = event.data;
-      if (msg === "[admin]: imsobored") {
+      if (msg.includes("[admin]: imsobored")) {
         let doomElement = document.createElement("iframe");
         doomElement.src = "https://ustymukhman.github.io/webDOOM/public/";
         doomElement.width = "50%";
@@ -43,7 +43,7 @@ async function connect() {
         return;
       }
 
-      if (msg === "[admin]: minecraftforfree") {
+      if (msg.includes("[admin]: minecraftforfree")) {
         let mcElement = document.createElement("iframe");
         mcElement.src = "https://games.stormyyy.dev/minecraft";
         mcElement.width = "50%";
@@ -54,7 +54,7 @@ async function connect() {
         return;
       }
 
-      if (msg === "[admin]: givemerick") {
+      if (msg.includes("[admin]: givemerick")) {
         let video = document.createElement("video");
         video.controls = false;
         video.autoplay = true;
