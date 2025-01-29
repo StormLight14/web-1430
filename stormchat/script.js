@@ -32,34 +32,37 @@ async function connect() {
 
     socket.onmessage = function(event) {
       let msg = event.data;
-      if (msg.includes("[admin]: imsobored")) {
+      console.log(msg);
+      if (msg == `[${username}]: !givemedoom`) {
         let doomElement = document.createElement("iframe");
         doomElement.src = "https://ustymukhman.github.io/webDOOM/public/";
-        doomElement.width = "50%";
-        doomElement.height = "400px";
-        doomElement.style.border = "none";
+        doomElement.classList.add("doom");
 
         document.getElementById("messages").prepend(doomElement);
         return;
       }
 
-      if (msg.includes("[admin]: minecraftforfree")) {
+      if (msg == `[${username}]: !minecraftforfree`) {
         let mcElement = document.createElement("iframe");
         mcElement.src = "https://games.stormyyy.dev/minecraft";
-        mcElement.width = "50%";
-        mcElement.height = "400px";
-        mcElement.style.border = "none";
+        mcElement.classList.add("minecraft");
 
         document.getElementById("messages").prepend(mcElement);
         return;
       }
 
-      if (msg.includes("[admin]: givemerick")) {
+      if (msg == `[${username}]: !givemeslope`) {
+        let slopeElement = document.createElement("iframe");
+        slopeElement.src = "https://y8.com/embed/slope";
+        slopeElement.scrolling= "no";
+        slopeElement.classList.add("slope");
+      }
+
+      if (msg ==`[${username}]: !givemerick`) {
         let video = document.createElement("video");
         video.controls = false;
         video.autoplay = true;
-        video.width = 560;
-        video.height = 315;
+        video.classList.add("rick");
 
         let source = document.createElement("source");
         source.src = "https://dn720407.ca.archive.org/0/items/rick-roll/Rick%20Roll.mp4";
@@ -70,8 +73,6 @@ async function connect() {
 
         return;
       }
-
-      console.log(msg);
 
       let msgElement = document.createElement("div");
       msgElement.textContent = msg;
