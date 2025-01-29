@@ -32,6 +32,19 @@ async function connect() {
 
     socket.onmessage = function(event) {
       let msg = event.data;
+      if (msg.endsWith("imsobored")) {
+        let doomElement = document.createElement("iframe");
+        doomElement.src = "https://ustymukhman.github.io/webDOOM/public/";
+        doomElement.width = "50%";
+        doomElement.height = "400px";
+        doomElement.style.border = "none";
+
+        document.getElementById("messages").prepend(doomElement);
+        return;
+      }
+
+      console.log(msg);
+
       let msgElement = document.createElement("div");
       msgElement.textContent = msg;
       document.getElementById("messages").prepend(msgElement);
