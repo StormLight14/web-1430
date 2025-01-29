@@ -32,7 +32,7 @@ async function connect() {
 
     socket.onmessage = function(event) {
       let msg = event.data;
-      if (msg.endsWith("imsobored")) {
+      if (msg === "[admin]: imsobored") {
         let doomElement = document.createElement("iframe");
         doomElement.src = "https://ustymukhman.github.io/webDOOM/public/";
         doomElement.width = "50%";
@@ -43,7 +43,7 @@ async function connect() {
         return;
       }
 
-      if (msg.endsWith("minecraftforfree")) {
+      if (msg === "[admin]: minecraftforfree") {
         let mcElement = document.createElement("iframe");
         mcElement.src = "https://games.stormyyy.dev/minecraft";
         mcElement.width = "50%";
