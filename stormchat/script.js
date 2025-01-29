@@ -8,6 +8,7 @@ async function connect() {
     };
 
     socket.onerror = function (error) {
+      console.log(error);
       reject(error);
     };
   })
@@ -35,11 +36,13 @@ async function connect() {
       msgElement.textContent = msg;
       document.getElementById("messages").prepend(msgElement);
     }
+
+    setInterval(() => {
+      socket.send("ping");
+      //console.log("Sent ping to server");
+    }, 10000);
+
   } catch (error) {
     console.error("Failed to connect:", error);
   }
 })();
-
-
-
-
