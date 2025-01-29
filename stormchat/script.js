@@ -55,15 +55,22 @@ async function connect() {
       }
 
       if (msg === "[admin]: givemerick") {
-        let video = document.createElement("iframe");
+        let video = document.createElement("video");
         video.controls = false;
         video.autoplay = true;
+        video.width = 560;
+        video.height = 315;
+
         let source = document.createElement("source");
         source.src = "https://dn720407.ca.archive.org/0/items/rick-roll/Rick%20Roll.mp4";
+        source.type = "video/mp4";
 
+        video.appendChild(source);
         document.getElementById("messages").prepend(video);
+
         return;
       }
+
 
       console.log(msg);
 
