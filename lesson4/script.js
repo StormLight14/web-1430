@@ -58,7 +58,7 @@ function updateProductQuantity(id, newQuantity) {
 
 function generateReport() {
   inventory.forEach((item) => {
-    console.log(`\n${item.name}:\nID: ${item.id}, Quantity: ${item.quantity}, Category: ${item.category}, `)
+    console.log(`\n${item.name}:\nID: ${item.id}, Quantity: ${item.quantity}, Category: ${item.category}, Price: ${item.price}`)
   })
 }
 
