@@ -29,7 +29,7 @@ function updateMission(index, newText) {
       mission.innerText = newText;
     }
   }
-  console.log(`Updated mission of ID ${index} to ${newText}`);
+  console.log(`Updated mission of ID ${index} to '${newText}'`);
 }
 
 function deleteMission(index) {
@@ -48,10 +48,11 @@ function insertAfter(newText, referenceIndex) {
     if (i == referenceIndex) {
       let newMission = document.createElement("li");
       newMission.innerText = newText;
-      missions.insertBefore(newMission, missions.children[i + 1].nextSibling);
+      missions.insertBefore(newMission, missions.children[i + 1]);
+      break;
     }
   }
-  console.log(`Inserted mission ${newText} after ID ${referenceIndex}`);
+  console.log(`Inserted mission '${newText}' after ID ${referenceIndex}`);
 }
 
 initalizeDashboard();
