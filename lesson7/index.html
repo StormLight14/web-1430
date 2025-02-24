@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epic Rock Paper Scissors Webpage</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="center-flex">
+  <div id="game-container" class="center-flex">
+    <p>Pick an option!</p>
+    <div class="option-select">
+      <button id="rock-button">Rock</button>
+      <button id="paper-button">Paper</button>
+      <button id="scissors-button">Scissors</button>
+    </div>
+  </div>
+
+  <div id="result-container" style="display: none" class="center-flex">
+    <p id="result"></p>
+    <button id="play-again">Play Again!</button>
+  </div>
+
+  <div id="game-end-container" style="display: none" class="center-flex">
+    <p id="game-result"></p>
+    <button id="reset-game">Reset Game!</button>
+  </div>
+
+  <div class="scores">
+    <p id="wins">Your Wins: 0</p>
+    <p id="computer-wins">Computer Wins: 0</p>
+    <p id="ties">Ties: 0</p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

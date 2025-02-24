@@ -1,0 +1,48 @@
+body {
+  font-family: sans-serif;
+  background-color: #B7B1F2;
+  color: #000000;
+  font-size: 1.25em;
+}
+
+.center-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-select {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  border-color: #8a81e3;
+  border-width: 2px;
+  border-radius: 0.5em;
+  border-style: solid;
+  background-color: #FFDCCC;
+}
+
+button:hover {
+  background-color: #f7bb9e;
+}
+
+button:active {
+  border-color: #574ad4;
+  background-color: #f0aa89;
+}
+
+.scores {
+  margin-top: 0.5em;
+  padding: 0.25em 0.5em;
+  border-color: #8a81e3;
+  border-width: 2px;
+  border-radius: 0.5em;
+  border-style: solid;
+  background-color: #FFDCCC;
+}
