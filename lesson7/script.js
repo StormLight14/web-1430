@@ -75,6 +75,7 @@ function update_scoreboard() {
 }
 
 function game_ended(winner) {
+  update_scoreboard()
   game_container.style.display = "none";
   result_container.style.display = "none";
   game_end_container.style.display = "flex";
