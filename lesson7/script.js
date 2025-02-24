@@ -47,12 +47,14 @@ function button_clicked(button) {
     computer_wins += 1;
     if (computer_wins >= 5) {
       game_ended("Computer");
+      return;
     }
   } else {
     result.innerText = `You won! Computer chose: ${computer_choice}`;
     wins += 1;
     if (wins >= 5) {
       game_ended("You");
+      return;
     }
   }
 
@@ -77,7 +79,7 @@ function game_ended(winner) {
   result_container.style.display = "none";
   game_end_container.style.display = "flex";
 
-  game_result.innerText = `${winner} Won!`;
+  game_result.innerText = `${winner} won the Game!`;
 }
 
 function reset_game() {
