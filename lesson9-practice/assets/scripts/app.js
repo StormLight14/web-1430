@@ -5,7 +5,13 @@ const fetchButton = document.querySelector("#available-posts button");
 const postList = document.querySelector("ul");
 
 function sendHttpRequest(method, url, data) {
-    return fetch(url).then(response => {
+    return fetch(url, {
+        method: method,
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
         return response.json();
     })
 }
@@ -22,4 +28,28 @@ async function fetchPosts() {
     }
 }
 
+async function createPost(title, content) {
+    const userId = Math.ceil(Math.random() * 10);
+    const post = {
+        title: title,
+        body: content,
+        userId: userId
+    };
+
+    sendHttpRequest("POST", "https://jsonplaceholder.typicode.com/posts", post);
+}
+
 fetchButton.addEventListener("click", fetchPosts);
+form.addEventListener("submit", event => {
+    event.preventDefault();
+    const title = event.currentTarget.querySelector("#title").value;
+    const content = event.currentTarget.querySelector("#content").value;
+    createPost(title, content);
+});
+
+postList.addEventListener("click", event => {
+    if (event.target.tagName === "BUTTON") {
+        const postId = event.target.closest("li").id;
+        sendHttpRequest("DELETE", `https://jsonplaceholder.typicode.com/posts/${postId}`);
+    }
+});
