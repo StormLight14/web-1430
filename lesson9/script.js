@@ -2,6 +2,10 @@ const main_container = document.getElementById("main-container");
 let weather_button = null;
 let city_input = null;
 let current_city = "Ghent";
+const country_label = document.getElementById("country");
+const condition_label = document.getElementById("country");
+const humidity_label = document.getElementById("country");
+const icon = document.getElementById("icon");
 
 function initalize_weather_app() {
   let h1 = document.createElement("h1");
@@ -21,9 +25,16 @@ function initalize_weather_app() {
 }
 
 async function fetch_weather_data() {
-  let responseData = fetch(`https://api.weatherapi.com/v1/current.json?key=56a5732619044108945214503251303&q=${current_city}`, {
+  fetch(`https://api.weatherapi.com/v1/current.json?key=56a5732619044108945214503251303&q=${current_city}`, {
     method: "GET"
-  }).await;
+  }).then((response_data) => {
+    update_weather_labels(response_data.body);
+  });
+}
+
+function update_weather_labels(weather_data) {
+  console.log(weather_data);
+  country_label = weather_data.location.country;
 }
 
 initalize_weather_app();
