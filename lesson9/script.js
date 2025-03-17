@@ -21,6 +21,10 @@ function initalize_weather_app() {
   if (localStorage.getItem("last_city")) {
     current_city = localStorage.getItem("last_city");
   }
+
+  if (localStorage.getItem("temperature_unit")) {
+    temperature_unit = localStorage.getItem("temperature_unit");
+  }
   
   weather_button = document.createElement("button");
   weather_button.innerText = "Get Weather!";
@@ -118,10 +122,12 @@ if (weather_button) {
 
 celsius_button.addEventListener("change", (_event) => {
   temperature_unit = "celsius";
+  localStorage.setItem("temperature_unit", "celsius");
   update_weather_labels(current_weather_data);
 });
 
 fahrenheit_button.addEventListener("change", (_event) => {
   temperature_unit = "fahrenheit";
+  localStorage.setItem("temperature_unit", "fahrenheit");
   update_weather_labels(current_weather_data);
 });
