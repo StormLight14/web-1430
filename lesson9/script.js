@@ -24,7 +24,16 @@ function initalize_weather_app() {
 
   if (localStorage.getItem("temperature_unit")) {
     temperature_unit = localStorage.getItem("temperature_unit");
+    if (temperature_unit === "fahrenheit") {
+      fahrenheit_button.checked = true;
+      celsius_button.checked = false;
+      console.log("f should be selected.");
+    } else {
+      fahrenheit_button.checked = false;
+      celsius_button.checked = true;
+    }
   }
+
   
   weather_button = document.createElement("button");
   weather_button.innerText = "Get Weather!";
