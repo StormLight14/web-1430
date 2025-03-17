@@ -10,6 +10,7 @@ const temperature_label = document.getElementById("temperature");
 const feelslike_label = document.getElementById("feelslike")
 const windspeed_label = document.getElementById("windspeed");
 const icon = document.getElementById("icon");
+const response_label = document.getElementById("response");
 
 function initalize_weather_app() {
   if (localStorage.getItem("last_city")) {
@@ -40,9 +41,22 @@ function initalize_weather_app() {
 
 async function fetch_weather_data() {
   try {
+    if (current_city.trim() === "") {
+      response_label.innerText = "City input must not be empty.";
+      return;
+    }
+
     const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=56a5732619044108945214503251303&q=${current_city}`, {
       method: "GET"
     });
+
+    if (!response.ok) {
+      response_label.innerText = `HTTP error status: ${response.status}`;
+      throw new Error(`HTTP error status: ${response.status}`);
+    } else {
+      response_label.innerText = "";
+    }
+
     const response_data = await response.json();
     update_weather_labels(response_data);
   } catch(err) {

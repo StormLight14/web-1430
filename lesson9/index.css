@@ -12,3 +12,7 @@ h2 {
 ul {
   margin-top: 0;
 }
+
+#response {
+  color: #FF0000;
+}
