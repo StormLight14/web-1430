@@ -21,6 +21,19 @@ input[type=text] {
   text-align: center;
 }
 
+button {
+  padding: 0.5em 0.5em;
+  background-color: #444444;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 2px;
+  color: #ffffff;
+}
+
+button:active {
+  background-color: #333333;
+}
+
 .container {
   display: flex;
   flex-direction: column-reverse;
