@@ -42,6 +42,7 @@ function initalize_weather_app() {
   fetch_weather_data();
 
   city_input = document.createElement("input");
+  city_input.type = "text";
   city_input.value = current_city;
   city_input.placeholder = "Enter a city name...";
   city_input.id = "city-input";
