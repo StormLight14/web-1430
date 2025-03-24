@@ -21,6 +21,21 @@ function init() {
       console.log('Search');
       break;
   }
+
+  highlightActiveLink();
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+function highlightActiveLink() {
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    if (link.getAttribute('href' === global.currentPage)) {
+      link.classList.add('active');
+    } else {
+      console.log("page doesnt match");
+      console.log(link.getAttribute('href'));
+      console.log(global.currentPage);
+    }
+  });
+}
