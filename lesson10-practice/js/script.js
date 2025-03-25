@@ -4,7 +4,8 @@ const global = {
     term: '',
     type: '',
     page: 1,
-    totalPages: 1
+    totalPages: 1,
+    totalResults: 0
   },
   api: {
     key: '4e04d16f097b644ff6dca9863d09360e',
@@ -295,11 +296,15 @@ async function search() {
   global.search.term = urlParams.get('search-term');
 
   if (global.search.term !== '' && global.search.term !== null) {
-    const { results, total_pages, page } = await searchAPIData();
+    const { results, total_pages, page, total_results } = await searchAPIData();
     if (results.length === 0) {
       showAlert('No results found.');
       return;
     }
+
+    global.search.totalResults = total_results;
+    global.search.totalPages = total_pages;
+    global.search.page = page;
 
     displaySearchResults(results);
 
@@ -332,14 +337,18 @@ function displaySearchResults(results) {
     `;
 
     document.querySelector('#search-results').appendChild(div);
+    document.querySelector('#search-results-heading').innerHTML = `
+        <h2>${results.length} of ${global.search.totalResults} Results for ${global.search.term}</h2>
+    `;
   });
+  displayPagination();
 }
 
 async function searchAPIData() {
   showSpinner();
 
   const response = await fetch(
-    `${global.api.url}search/${global.search.type}?api_key=${global.api.key}&language=en-US&query=${global.search.term}`
+    `${global.api.url}search/${global.search.type}?api_key=${global.api.key}&language=en-US&query=${global.search.term}&page=${global.search.page}`
   )
 
   const data = await response.json();
@@ -358,6 +367,39 @@ function showAlert(message, className = 'error') {
   setTimeout(() => {
     alertEl.remove()
   }, 3000);
+}
+
+function displayPagination() {
+  const div = document.createElement('div');
+  div.classList.add('pagination');
+  div.innerHTML = `
+    <button class="btn btn-primary" id="prev">Prev</button>
+    <button class="btn btn-primary" id="next">Next</button>
+    <div class="page-counter">Page ${global.search.page} of ${global.search.totalPages}</div>
+  `;
+
+  document.querySelector('#pagination').innerHTML = '';
+  document.querySelector('#pagination').appendChild(div);
+
+  if (global.search.page === 1) {
+    document.querySelector('#prev').disabled = true;
+  }
+
+  if (global.search.page === global.search.totalPages) {
+    document.querySelector('#next').disabled = true;
+  }
+
+  document.querySelector('#prev').addEventListener('click', async () => {
+    global.search.page -= 1;
+    const { results, total_pages } = await searchAPIData();
+    displaySearchResults(results);
+  });
+
+  document.querySelector('#next').addEventListener('click', async () => {
+    global.search.page += 1;
+    const { results, total_pages } = await searchAPIData();
+    displaySearchResults(results);
+  });
 }
 
 function showSpinner() {
