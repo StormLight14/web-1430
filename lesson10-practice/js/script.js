@@ -20,15 +20,20 @@ function init() {
       displaySlider();
       displayPopularMovies();
       break;
+    case '/shows':
     case '/shows.html':
       displayPopularShows();
+      console.log('Displaying popular shows');
       break;
+    case '/movie-details':
     case '/movie-details.html':
       displayMovieDetails();
       break;
+    case '/tv-details':
     case '/tv-details.html':
       displayShowDetails();
       break;
+    case '/search':
     case '/search.html':
       search();
       break;
@@ -50,10 +55,10 @@ function highlightActiveLink() {
 
 async function fetchAPIData(endpoint) {
   showSpinner();
-
+  console.log('Fetching data from:', endpoint);
   const response = await fetch(`${global.api.url}${endpoint}?api_key=${global.api.key}&language=en-US`);
   const data = await response.json();
-
+  console.log('API Response:', data);
   setTimeout(() => {
     hideSpinner();
   }, 300);
@@ -86,9 +91,13 @@ async function displayPopularMovies() {
 }
 
 async function displayPopularShows() {
+  console.log('Fetching popular TV shows...');
   const { results } = await fetchAPIData('tv/popular');
+  console.log('TV shows data:', results);
+
 
   results.forEach(show => {
+    console.log('Processing show:', show);
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
