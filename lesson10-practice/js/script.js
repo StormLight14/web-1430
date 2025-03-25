@@ -117,7 +117,7 @@ async function displayMovieDetails() {
   const movie = await fetchAPIData(`movie/${movieId}`);
 
   const div = document.getElementById('movie-details');
-  console.log(div);
+
   div.innerHTML = `
     <div class="details-top">
     <div>
@@ -157,6 +157,31 @@ async function displayMovieDetails() {
     <div class="list-group">${movie.production_companies.map(company => `<span>${company.name}</span>`, ', ')}</div>
   </div>
   `;
+
+  displayBackgroundImage('movie', movie.backdrop_path);
+}
+
+function displayBackgroundImage(type, backgroundPath) {
+  const overlayDiv = document.createElement('div');
+  overlayDiv.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundPath}")`;
+  overlayDiv.style.backgroundSize = 'cover';
+  overlayDiv.style.backgroundPosition = 'center';
+  overlayDiv.style.backgroundRepeat = 'no-repeat';
+  overlayDiv.style.height = '100vh';
+  overlayDiv.style.width = '100vw';
+  overlayDiv.style.position = 'absolute';
+  overlayDiv.style.top = '0';
+  overlayDiv.style.left = '0';
+  overlayDiv.style.zIndex = '-1';
+  overlayDiv.style.opacity = '0.1';
+
+  if (type === 'movie') {
+    console.log(document.querySelector('#movie-details'));
+    document.querySelector('#movie-details').appendChild(overlayDiv);
+  } else {
+    console.log(overlayDiv.style.backgroundImage);
+    document.querySelector('#tv-details').appendChild(overlayDiv);
+  }
 }
 
 function showSpinner() {
