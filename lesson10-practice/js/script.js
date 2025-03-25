@@ -1,5 +1,15 @@
 const global = {
   currentPage: window.location.pathname,
+  search: {
+    term: '',
+    type: '',
+    page: 1,
+    totalPages: 1
+  },
+  api: {
+    key: '4e04d16f097b644ff6dca9863d09360e',
+    url: 'https://api.themoviedb.org/3/'
+  }
 };
 
 function init() {
@@ -19,7 +29,7 @@ function init() {
       displayShowDetails();
       break;
     case '/search.html':
-      console.log('Search');
+      search();
       break;
   }
 
@@ -38,12 +48,9 @@ function highlightActiveLink() {
 }
 
 async function fetchAPIData(endpoint) {
-  const API_KEY = '4e04d16f097b644ff6dca9863d09360e';
-  const API_URL = 'https://api.themoviedb.org/3/';
-
   showSpinner();
 
-  const response = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
+  const response = await fetch(`${global.api.url}${endpoint}?api_key=${global.api.key}&language=en-US`);
   const data = await response.json();
 
   setTimeout(() => {
@@ -278,6 +285,46 @@ function displayBackgroundImage(type, backgroundPath) {
     console.log(overlayDiv.style.backgroundImage);
     document.querySelector('#show-details').appendChild(overlayDiv);
   }
+}
+
+async function search() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  global.search.type = urlParams.get('type');
+  global.search.term = urlParams.get('search-term');
+
+  if (global.search.term !== '' && global.search.term !== null) {
+    const result = await searchAPIData();
+    console.log(result);
+  } else {
+    showAlert('Please enter a search term!');
+  }
+}
+
+async function searchAPIData() {
+  showSpinner();
+
+  const response = await fetch(
+    `${global.api.url}search/${global.search.type}?api_key=${global.api.key}&language=en-US&query=${global.search.term}`
+  )
+
+  const data = await response.data;
+
+  hideSpinner();
+
+  return data;
+}
+
+function showAlert(message, className = 'error') {
+  const alertEl = document.createElement('div');
+  alertEl.classList.add('alert', className);
+  alertEl.appendChild(document.createTextNode(message));
+  document.querySelector('#alert').appendChild(alertEl);
+
+  setTimeout(() => {
+    alertEl.remove()
+  }, 3000);
 }
 
 function showSpinner() {
