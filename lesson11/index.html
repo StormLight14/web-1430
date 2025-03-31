@@ -14,10 +14,11 @@
         <input id="mage-name" type="text"/>
         <label for="mage-health">Health:</label>
         <input id="mage-health" value=0 type="number"/>
-        <label for="mage-damage">Damage:</label>
-        <input id="mage-damage" value=0 type="number"/>
+        <label for="mage-strength">Strength:</label>
+        <input id="mage-strength" value=0 type="number"/>
         <label for="mage-spell">Magic Spell:</label>
         <input id="mage-spell" type="text"/>
+        <input type="submit" value="Create!"/>
     </form>
     <h2>Warrior</h2>
     <form id="warrior-form">
@@ -25,11 +26,27 @@
         <input id="warrior-name" type="text"/>
         <label for="warrior-health">Health:</label>
         <input id="warrior-health" value=0 type="number"/>
-        <label for="warrior-damage">Damage:</label>
-        <input id="warrior-damage" value=0 type="number"/>
+        <label for="warrior-strength">Strength:</label>
+        <input id="warrior-strength" value=0 type="number"/>
         <label for="warrior-weapon">Weapon:</label>
         <input id="warrior-weapon" type="text"/>
+        <input type="submit" value="Create!"/>
     </form>
+    <h3>Character Stats</h3>
+    <ul>
+        <li id="name">Name: None</li>
+        <li id="type">Type: Mage</li>
+        <li id="health">Health: 0</li>
+        <li id="strength">Strength: 0</li>
+        <li id="weapon" class="none">Weapon: None</li>
+        <li id="spell">Spell: None</li>
+    </ul>
+
+    <input id="damage-amount" type="number" value=0 />
+    <button id="damage-button">Damage!</button>
+    <input id="heal-amount" type="number" value=0 />
+    <button id="heal-button">Heal!</button>
+
     <script src="script.js"></script>
 </body>
 </html>
